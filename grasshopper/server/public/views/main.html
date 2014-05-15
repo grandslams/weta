@@ -1,0 +1,81 @@
+<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1" style="position: fixed; top: 50%; left: 50%;z-index: 1000"></span>
+<div class={{navBarClass}} role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <img src="/images/logo.png">
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-tint"></span> {{color}}
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="" ng-click="colorBtnClick('White', 'navbar navbar-default navbar-fixed-top', 'panel panel-default', 'btn btn-default btn-xs pull-right', '#FFF');">White</a></li>
+                        <li><a href="" ng-click="colorBtnClick('Black', 'navbar navbar-inverse navbar-fixed-top', 'panel panel-dark', 'btn btn-dark btn-xs pull-right', '#555');">Black</a></li>
+                    </ul>
+                </li>
+                <p class="navbar-text">|</p>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-list-alt"></span> {{agentName}}
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="agent in agentList"><a href="" ng-click="agentBtnClick(agent.Name)">{{agent.Name}}</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-time"></span> {{date}}
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="" ng-click="dateBtnClick(0, 60000, '1 Minute');">1 Minute</a></li>
+                        <li><a href="" ng-click="dateBtnClick(1, 3600000, '1 Hour');">1 Hour</a></li>
+                        <li><a href="" ng-click="dateBtnClick(6, 21600000, '6 Hours');">6 Hours</a></li>
+                        <li><a href="" ng-click="dateBtnClick(12, 43200000, '12 Hours');">12 Hours</a></li>
+                        <li><a href="" ng-click="dateBtnClick(24, 86400000, '1 Day');">1 Day</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="content" class="col-md-12" style="padding-left:50px;">
+        <div ng-include src="'views/panels/system.html'"></div>
+        <div ng-include src="'views/panels/node.html'"></div>
+        <div ng-include src="'views/panels/process.html'"></div>
+        <div ng-include src="'views/panels/transactions.html'"></div>
+    </div>
+    <div id="sidebar" class="col-md-3" >
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <b>MENU</b>
+                <button type="button" class={{panelBtnClass}} ng-click="sidebarBtnClick();">
+                    <span id="sidebar_icon" class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <p style="color:#F0AD4E;">System Monitoring<span class="glyphicon glyphicon-stats pull-right" style="color:#F0AD4E;"></span></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('File System');">File System&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["File System"][0]}}</button></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('Memory Usage');">Memory Usage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["Memory Usage"][0]}}</button></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('Storage Usage');">Storage Usage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["Storage Usage"][0]}}</button></p>
+                <p style="color:#5CB85C;">Node Server Monitoring<span class="glyphicon glyphicon-signal pull-right" style="color:#5CB85C;"></span></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('Garbage Collection Full');">GCs Full&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["Garbage Collection Full"][0]}}</button></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('Garbage Collection Incremental');">GCs Incremental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["Garbage Collection Incremental"][0]}}</button></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('Heap Usage');">Heap Usage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["Heap Usage"][0]}}</button></p>
+                <p style="color:#B85CB8;">Process<span class="glyphicon glyphicon-cog pull-right" style="color:#B85CB8;"></span></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('CPU Usage');">CPU Usage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["CPU Usage"][0]}}</button></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('CPU Time');">CPU Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["CPU Time"][0]}}</button></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('V8 Heap Usage');">V8 Heap Usage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["V8 Heap Usage"][0]}}</button></p>
+                <p style="color:#5BC0DE;">Transactions<span class="glyphicon glyphicon-dashboard pull-right" style="color:#5BC0DE;"></span></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('HTTP Request');">HTTP Request&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["HTTP Request"][0]}}</button></p>
+                <p><button type="button" class="btn btn-default btn-xs btn-block" style="text-align:left;" ng-click="menuBtnClick('HTTP Response');">HTTP Response&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{menuList["HTTP Response"][0]}}</button></p>
+            </div>
+        </div>
+    </div>
+</div>

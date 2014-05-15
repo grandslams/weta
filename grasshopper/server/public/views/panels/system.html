@@ -1,0 +1,106 @@
+<div ng-if="menuList['File System'][0] == 'ON'">
+    <div ng-class="menuList['File System'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-stats" style="color:#F0AD4E;"></span> File System (Count)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('File System');">
+                    <span ng-class="menuList['File System'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="fileSystemData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="menuList['Memory Usage'][0] == 'ON'">
+    <div ng-class="menuList['Memory Usage'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-stats" style="color:#F0AD4E;"></span> Memory Usage (MB)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('Memory Usage');">
+                    <span ng-class="menuList['Memory Usage'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="memoryUsageData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('MB')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="menuList['Storage Usage'][0] == 'ON'">
+    <div ng-class="menuList['Storage Usage'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading dropdown">
+                <span class="glyphicon glyphicon-stats" style="color:#F0AD4E;"></span> Storage Usage (MB)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('Storage Usage');">
+                    <span ng-class="menuList['Storage Usage'][2]"></span>
+                </button>
+                <button class="{{panelBtnClass}} dropdown-toggle" type="button" id="diskList" data-toggle="dropdown"> {{getSplit(diskName, 2)}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="diskList">
+                    <li role="presentation" ng-repeat="disk in diskList" ng-if="disk.Name == 'Total space'">
+                        <a href="" role="menuitem" ng-click="diskBtnClick(disk.Scope)">{{getSplit(disk.Scope, 2)}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="storageUsageData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('MB')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

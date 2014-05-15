@@ -1,0 +1,99 @@
+<div ng-if="menuList['CPU Usage'][0] == 'ON'">
+    <div ng-class="menuList['CPU Usage'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-cog" style="color:#B85CB8;"></span> CPU Usage (%)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('CPU Usage');">
+                    <span ng-class="menuList['CPU Usage'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="cpuUsageData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('%')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="menuList['CPU Time'][0] == 'ON'">
+    <div ng-class="menuList['CPU Time'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-cog" style="color:#B85CB8;"></span> CPU Time (ms)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('CPU Time');">
+                    <span ng-class="menuList['CPU Time'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="cpuTimeData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('ms')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="menuList['V8 Heap Usage'][0] == 'ON'">
+    <div ng-class="menuList['V8 Heap Usage'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-cog" style="color:#B85CB8;"></span> V8 Heap Usage (MB)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('V8 Heap Usage');">
+                    <span ng-class="menuList['V8 Heap Usage'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="V8HeapUsageData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('MB')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

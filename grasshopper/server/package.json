@@ -1,0 +1,19 @@
+{
+  "name": "grasshopper",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "*",
+    "async":"*",
+    "bower":"*",
+    "socket.io":"*",
+    "socket.io-client":"*",
+    "mongoose":"*",
+    "moment":"*",
+    "cors":"*"
+  }
+}

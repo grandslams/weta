@@ -1,0 +1,98 @@
+<div ng-if="menuList['Garbage Collection Full'][0] == 'ON'">
+    <div ng-class="menuList['Garbage Collection Full'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-signal" style="color:#5CB85C;"></span> Garbage Collection Full (Count)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('Garbage Collection Full');">
+                    <span ng-class="menuList['Garbage Collection Full'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="GCsFullData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="menuList['Garbage Collection Incremental'][0] == 'ON'">
+    <div ng-class="menuList['Garbage Collection Incremental'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-signal" style="color:#5CB85C;"></span> Garbage Collection Incremental (Count)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('Garbage Collection Incremental');">
+                    <span ng-class="menuList['Garbage Collection Incremental'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="GCsIncrementalData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="menuList['Heap Usage'][0] == 'ON'">
+    <div ng-class="menuList['Heap Usage'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-signal" style="color:#5CB85C;"></span> Heap Usage (MB)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('Heap Usage');">
+                    <span ng-class="menuList['Heap Usage'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="heapUsageData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('MB')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

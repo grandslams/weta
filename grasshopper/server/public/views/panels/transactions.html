@@ -1,0 +1,65 @@
+<div ng-if="menuList['HTTP Request'][0] == 'ON'">
+    <div ng-class="menuList['HTTP Request'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-dashboard" style="color:#5BC0DE;"></span> HTTP Request (Count)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('HTTP Request');">
+                    <span ng-class="menuList['HTTP Request'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="httpRequestData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="menuList['HTTP Response'][0] == 'ON'">
+    <div ng-class="menuList['HTTP Response'][1]">
+        <div class={{panelClass}}>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-dashboard" style="color:#5BC0DE;"></span> HTTP Response (ms)
+                <button type="button" class={{panelBtnClass}} ng-click="chartSizeBtnClick('HTTP Response');">
+                    <span ng-class="menuList['HTTP Response'][2]"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div style="margin:-40px; margin-left:-20px;">
+                    <nvd3-line-chart
+                            height="280"
+                            data="httpResponseData"
+                            showXAxis="true"
+                            showYAxis="true"
+                            xAxisTickFormat="xAxisTickFormat()"
+                            yAxisTickFormat="yAxisTickFormat('ms')"
+                            x="xFunction()"
+                            y="yFunction()"
+                            tooltips="true"
+                            interactive="true"
+                            showValues="true"
+                            showLegend="false"
+                            tooltipContent="tooltipBtnClick();">
+                        <svg></svg>
+                    </nvd3-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
